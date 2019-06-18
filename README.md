@@ -9,7 +9,7 @@ Here is the BibTex:
 ```
 @inproceedings{shah2019growing,
   title={Growing Attributed Networks through Local Processes},
-  author={Shah, Harshay and Kuma, Suhansanu and Sundaram, Hari},
+  author={Shah, Harshay and Kumar, Suhansanu and Sundaram, Hari},
   booktitle={The World Wide Web Conference},
   pages={3208--3214},
   year={2019},
