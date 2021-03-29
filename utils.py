@@ -8,7 +8,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import igraph as ig
 import seaborn as sns
-import networkx as nx
+# import networkx as nx
 from matplotlib.ticker import ScalarFormatter
 
 import matplotlib
@@ -113,7 +113,7 @@ def get_time_config_model(g, time_attr, debug=False):
 
     if debug: print ("{} time_attr vals".format(len(years)))
     for year in years:
-        if debug: print year,
+        if debug: print (year, end=' ')
         new_nodes = year_nodes_map[year]
         for nid in new_nodes: instubs.extend([nid]*indeg_map[nid])
         random.shuffle(instubs)
@@ -584,9 +584,10 @@ def plot_deg_and_cc_and_deg_cc(graphs, labels=None, last_graph_baseline=True, ge
                               figcaption=None, add_cc_mean=True, add_dd_mean=True):
 
     if get_atty:
+        print ("Attribute Assortativity:")
         for g,l in zip(graphs, labels):
-            print "{}: {:.3f}".format(l, g.assortativity_nominal(attr_name))
-
+            print ("{}: {:.3f}".format(l, g.assortativity_nominal(attr_name)))
+            
     fig = None
     if not axs: fig, (ax1, ax2, ax3) = plt.subplots(1,3,figsize=(25,6))
     else: (ax1, ax2, ax3) = axs
@@ -636,7 +637,7 @@ def plot_binned_clustering_dist(binned_ccs, labels=None, ax=None, last_graph_bas
                                 plot_cdf=False, loglog=True, cmap='magma', add_mean=True):
     if not ax: ax = plt.subplot()
     if not labels: labels = list(map(str, range(len(binned_ccs))))
-    cmap = plt.get_cmap(cmap, len(labels)/2)
+    cmap = plt.get_cmap(cmap, len(labels)//2)
     baseline_cc = binned_ccs[-1]
     binned_baseline_cc = bin_clustering(baseline_cc)
     # baseline_bcc_cdf = np.cumsum(binned_ccs[-1])
